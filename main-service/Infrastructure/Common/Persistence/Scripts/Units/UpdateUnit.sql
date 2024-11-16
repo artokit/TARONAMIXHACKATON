@@ -1,0 +1,1 @@
+UPDATE units SET name=@name where id=@unit_id RETURNING id as "Id", company_id as "CompanyId", name as "Name"

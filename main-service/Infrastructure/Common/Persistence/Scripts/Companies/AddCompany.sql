@@ -1,0 +1,1 @@
+INSERT INTO COMPANIES(name, description, director_id) VALUES(@name, @description, @director_id) RETURNING id as "Id", name as "Name", description as "Description", image_id as "ImageId", director_id as "DirectorId"

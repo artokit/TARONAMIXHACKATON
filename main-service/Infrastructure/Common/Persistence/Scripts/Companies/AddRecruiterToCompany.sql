@@ -1,0 +1,1 @@
+INSERT INTO companies_users VALUES(@company_id, @user_id)

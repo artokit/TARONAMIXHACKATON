@@ -1,0 +1,1 @@
+DELETE FROM UNITS WHERE id=@id

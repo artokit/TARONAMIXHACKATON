@@ -1,0 +1,1 @@
+SELECT id as "Id", name as "Name", surname as "Surname", patronymic as "Patronymic", email as "Email", is_leader as "IsLeader", is_candidate as "IsCandidate", company_id as "CompanyId", unit_id as "UnitId", birthday as "Birthday" FROM WORKERS WHERE company_id=@company_id

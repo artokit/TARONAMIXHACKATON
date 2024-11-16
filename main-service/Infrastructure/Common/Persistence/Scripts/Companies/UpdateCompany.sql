@@ -1,0 +1,1 @@
+UPDATE COMPANIES SET name = @name, description = @description, image_id=@image_id where id = @id RETURNING id as "Id", name As "Name", description as "Description", image_id as "ImageId", director_id as "DirectorId"

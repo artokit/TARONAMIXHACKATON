@@ -1,0 +1,65 @@
+﻿version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+  main-service:
+    build:
+      context: ./main-service
+      dockerfile: ./Api/Dockerfile
+    networks:
+      - backend
+    ports:
+      - "8080:8080"
+    restart: always
+
+  storage-service:
+    build:
+      context: ./storage-service
+      dockerfile: Dockerfile
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+    restart: always
+
+  ai-service:
+    build:
+      context: ./ai-service
+      dockerfile: Dockerfile
+    networks:
+      - backend
+    ports:
+      - "8001:8001"
+    restart: always
+
+  nginx:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - backend
+
+volumes:
+  postgres_data:
+
+networks:
+  backend: 
+    driver: bridge

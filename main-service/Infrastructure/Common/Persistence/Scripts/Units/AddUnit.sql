@@ -1,0 +1,1 @@
+INSERT INTO units(company_id, name) VALUES(@company_id, @name) RETURNING id as "Id", company_id as "CompanyId", name as "Name"

@@ -1,0 +1,1 @@
+INSERT INTO tags(worker_id, name, type) VALUES(@worker_id, @name, @type) RETURNING id as "Id", name as "Name", type as "Type", worker_id as "WorkerId"
